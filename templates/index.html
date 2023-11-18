@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block style %}
+
+<style>
+    .card {
+        width: 32rem;
+        box-shadow: 0 0 20px rgba(0, 13, 252, 0.2);
+        transition: transform 0.4s ease-in-out;
+        padding: 0;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+    }
+
+    .container {
+        margin-top: 2%;
+    }
+
+    img {
+        margin: 0;
+        padding: 0;
+        width: 32rem;
+        height: 15rem;
+    }
+
+    .active-category {
+        background-color: blue;
+        color: white;
+    }
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<!-- This code -->
+<div class="container-fluid mt-3">
+    <div class="row">
+        <!-- filter -->
+        <div class="col-lg-2 mx-auto">
+            <div class="list-group">
+                <a href="/" class="list-group-item list-group-item-action {% if not request.GET.category %}active-category{% endif %}">All Products</a>
+                {% for mtype in m_type %}
+                <a href="/?category={{mtype.id}}" class="list-group-item list-group-item-action {% if request.GET.category == mtype.id %}active-category{% endif %}">{{mtype.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- all products -->
+        <div class="col-lg-10 mx-auto">
+            <div class="row mx-auto">
+                {% for medicine in medicines %}
+                <div class="card mx-2 my-2 medicine">
+                    <img src="../{{medicine.image}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title text-center" style="font-family: 'Poppins', sans-serif;color:red">
+                            <strong>{{medicine.name}}</strong>
+                        </h3>
+                        <p class="card-text text-center" style="font-family: 'Roboto', sans-serif;color:blue">
+                            <strong>{{medicine.salt}}</strong>
+                        </p>
+                        <h5 class="card-title text-center" style="color:green;">MRP: ₹{{medicine.mrp}}</h5>
+                        <h5 class="card-title text-center">Pack: {{medicine.pack}}</h5>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+{% endblock %}
