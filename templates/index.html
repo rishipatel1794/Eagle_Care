@@ -33,6 +33,10 @@ Home
         background-color: blue;
         color: white;
     }
+    /* .blue:active{
+        background-color: blue;
+        color: white;
+    } */
 
 </style>
 
@@ -48,11 +52,19 @@ Home
             <div class="list-group">
                 <a href="/" class="list-group-item list-group-item-action {% if not request.GET.category %}active-category{% endif %}">All Products</a>
                 {% for mtype in m_type %}
-                <a href="/?category={{mtype.id}}" class="list-group-item list-group-item-action {% if request.GET.category == mtype.id %}active-category{% endif %}">{{mtype.name}}</a>
+                <a href="/?category={{mtype.id}}" id="{{mtype.id}}" onclick="changeColor('{{mtype.id}}')" class="list-group-item list-group-item-action blue {% if request.GET.category == mtype.id %}active-category{% endif %}">{{mtype.name}}</a>
                 {% endfor %}
             </div>
         </div>
+<script >
+    function changeColor(id){
+        console.log(id)
+        document.getElementById(id).style.background = 'blue'
+        document.getElementById(id).style.color = 'white'
+        console.log("done")
 
+    }
+</script>
         <!-- all products -->
         <div class="col-lg-10 mx-auto">
             <div class="row mx-auto">
