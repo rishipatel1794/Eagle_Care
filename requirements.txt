@@ -32,9 +32,7 @@ pdfkit==1.0.0
 Pillow==9.4.0
 platformdirs==3.5.0
 protobuf==4.21.12
-PyAudio @ file:///C:/Users/rishi/Downloads/PyAudio-0.2.11-cp311-cp311-win_amd64.whl
 PyYAML==6.0
-reportlab==4.0.4
 requests==2.30.0
 scipy==1.10.0
 six==1.16.0
