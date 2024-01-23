@@ -1,4 +1,5 @@
 echo "BUILD START"
-python3.11 -m pip instsll -r requirements.txt
-python3.11 manage.py collectstatic --noinput
+python3 -m pip instsll -r requirements.txt
+mkdir staticfiles_build
+python3 manage.py collectstatic --noinput
 echo "BUILD END"
